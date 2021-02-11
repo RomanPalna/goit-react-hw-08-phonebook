@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import PhonebookReducer from './reducer';
+import authSlice from './auth/auth-slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -23,14 +24,15 @@ const middleware = [
 ];
 
 const persistConfig = {
-  key: 'contacts',
+  key: 'auth',
   storage,
-  blacklist: ['filter'],
+  whitelist: ['token'],
 };
 
 const store = configureStore({
   reducer: {
-    contacts: persistReducer(persistConfig, PhonebookReducer),
+    contacts: PhonebookReducer,
+    auth: persistReducer(persistConfig, authSlice),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

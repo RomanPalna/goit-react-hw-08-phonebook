@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import authOperations from '../redux/auth/auth-operations';
 
 export default function Registration() {
-  const [userName, setUserName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'userName':
-        return setUserName(value);
+      case 'name':
+        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -22,8 +23,8 @@ export default function Registration() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch();
-    setUserName('');
+    dispatch(authOperations.register({ name, email, password }));
+    setName('');
     setEmail('');
     setPassword('');
   };
@@ -31,13 +32,13 @@ export default function Registration() {
   return (
     <div>
       <h2>Please, register!</h2>
-      <form>
-        <label onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <label>
           User Name
           <input
             type="name"
             name="name"
-            value={userName}
+            value={name}
             onChange={handleChange}
           ></input>
         </label>
