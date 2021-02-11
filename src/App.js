@@ -6,6 +6,7 @@ import PhonebookViews from './views/PhonebookViews';
 import Login from './views/Login';
 import HomeView from './views/HomeView';
 import Registration from './views/Registration';
+import AppBar from './components/UserMenu/AppBar';
 
 import { fetchContacts } from './redux/operations';
 
@@ -16,6 +17,8 @@ export default function App() {
 
   return (
     <div>
+      <AppBar />
+      <hr />
       <Switch>
         <Route exact path="/" component={HomeView} />
         <Route exact path="/login" component={Login} />
