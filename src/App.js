@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import PhonebookViews from './views/PhonebookViews';
@@ -8,12 +8,12 @@ import HomeView from './views/HomeView';
 import Registration from './views/Registration';
 import AppBar from './components/UserMenu/AppBar';
 
-// import { fetchContacts } from './redux/operations';
+import { fetchContacts } from './redux/operations';
 
 export default function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => dispatch(fetchContacts()), [dispatch]);
+  useEffect(() => dispatch(fetchContacts()), [dispatch]);
 
   return (
     <div>
