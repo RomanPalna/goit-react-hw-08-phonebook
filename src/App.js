@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 
-import Phonebook from './components/Phonebook';
-import Contacts from './components/Contacts';
-import Finder from './components/Finder';
+import PhonebookViews from './views/PhonebookViews';
+import Login from './views/Login';
+import HomeView from './views/HomeView';
+import Registration from './views/Registration';
+
 import { fetchContacts } from './redux/operations';
 
 export default function App() {
@@ -13,12 +16,12 @@ export default function App() {
 
   return (
     <div>
-      <h2>Phonebook</h2>
-      <Phonebook />
-
-      <h2>Contacts</h2>
-      <Finder />
-      <Contacts />
+      <Switch>
+        <Route exact path="/" component={HomeView} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/registration" component={Registration} />
+        <Route exact path="/contacts" component={PhonebookViews} />
+      </Switch>
     </div>
   );
 }
